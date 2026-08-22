@@ -1,15 +1,15 @@
 pull_request_rules:
-  - name: dep-condition-probe
+  - name: skipped-counts-as-success
     conditions:
-      - base = main
-      - depends-on = TARGETDEP
+      - base=main
+      - "check-success = zz-required"
     actions:
-      label:
-        add:
-          - dep-listed
-  - name: attempt-merge
+      comment:
+        message: "ZZ-SKIPPED-SATISFIED-CHECK-SUCCESS"
+  - name: observe-skipped
     conditions:
-      - base = main
+      - base=main
+      - "check-skipped = zz-required"
     actions:
-      merge:
-        method: merge
+      comment:
+        message: "ZZ-OBSERVED-SKIPPED"
