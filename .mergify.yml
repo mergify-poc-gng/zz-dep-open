@@ -1,0 +1,15 @@
+pull_request_rules:
+  - name: dep-condition-probe
+    conditions:
+      - base = main
+      - depends-on = TARGETDEP
+    actions:
+      label:
+        add:
+          - dep-listed
+  - name: attempt-merge
+    conditions:
+      - base = main
+    actions:
+      merge:
+        method: merge
